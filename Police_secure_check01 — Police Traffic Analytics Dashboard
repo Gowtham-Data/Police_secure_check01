@@ -1,0 +1,28 @@
+# Police_secure_check01
+**Project overview:**
+
+A Python data module that connects to MySQL, optionally creates/inserts a table, queries Police_traffic_details1, cleans columns, and exposes a function Traffic_details() returning a pandas DataFrame.
+A Streamlit app with three pages: Home, Traffic Reports (filters a DataFrame), and Advanced Insights (runs SQL queries via mysql-connector).
+The Streamlit app must be launched via the CLI to avoid missing ScriptRunContext warnings and to enable widgets/session state.
+
+**Packages used:**
+*mysql-connector-python* for DB connection and cursor operations.
+*pandas* for DataFrame transforms and display.
+*streamlit* for the web UI, widgets, and layout.
+
+**Setup:**
+create a virtual environment, pip install -r requirements.txt, ensure the MySQL database exists, optionally run the create/insert block from Traffic_data.py to populate Police_traffic_details1.
+**Run:** streamlit run Traffic_data_Streamlit.py, with the reminder that python Traffic_data_Streamlit.py will produce ScriptRunContext warnings and limited functionality.
+
+I have create 2 py file for this projects one for data collection and cleaning,other one for streamilt
+
+1st file (Traffic_data) i have connect sql and python via mysqlconnect module..then create a tablre the name of Police_traffic_details1, after create, fetch the orginal data from local to df using pandas module and save as df
+then insert the dataframe(df) data to sql Police_traffic_details1 table..after that check the null values(missing values)
+once clean and change rows name user friendly, then save that clean data as data variable
+create one user defined package as DATA_POLICE, return that cleaned data on that module
+
+2nd file (Traffic_data_streamlit) i have import data_police module from traffic_data file then using steamlit sidebar to create navigation bar(home,traffic reports,advanced insights)
+Home page: info and awareness video.
+Traffic Reports: select filters from cleaned DataFrame returned by Traffic_details().
+Advanced Insights: choose a predefined SQL query, click Run to execute via mysql-connector and display results in a dataframe
+
